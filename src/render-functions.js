@@ -47,6 +47,7 @@ export const renderStatus = (statusDiv, statusInfoObj) => {
 
 export const renderUsers = (usersUl, users) => {
   usersUl.innerHTML = ''; 
+
   users.forEach((user) => {    
     const li = document.createElement("li");
     li.classList.add("user-card");
@@ -62,6 +63,7 @@ export const renderUsers = (usersUl, users) => {
 
 export const renderPosts = (postsUl, posts) => {
   postsUl.innerHTML = ''; 
+  
   posts.forEach((post) => {
     const li = document.createElement("li");
 

@@ -14,6 +14,12 @@ export const checkResponseStatus = () => {
     });
 };
 
+// export const checkResponseStatus = () => {
+//   return fetch(userUrl).then(({ status, ok, url}) => {
+//     return { status, ok, url}
+//   })    
+// };
+
 export const getUsers = () => {
   return fetch(userUrl)
     .then(response => response.json())
