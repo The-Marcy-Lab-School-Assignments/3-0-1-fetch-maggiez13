@@ -30,14 +30,60 @@ export const setupPageBasics = (parentEl) => {
     return { statusDiv, usersUl, postsUl, newUserForm, newUserDiv };
 };
 
-export const renderStatus = () => {
+export const renderStatus = (statusDiv, statusInfoObj) => {
+  const div = statusDiv; 
+
+  const h2 = document.createElement("h2");
+  h2.textContent = `Info on - ${statusInfoObj.url}`;
+  h2.setAttribute("id", "status-heading");
+
+  const p = document.createElement("p");
+  const statusText = statusInfoObj.ok ? "OK!" : "FAIL!";
+  p.textContent = `Status code: ${statusInfoObj.status}, ${statusText}`;
+  p.setAttribute("id", "status-code");
+  
+  div.append(h2, p);
 }
 
-export const renderUsers = () => {
+export const renderUsers = (usersUl, users) => {
+  usersUl.innerHTML = ''; 
+  users.forEach((user) => {    
+    const li = document.createElement("li");
+    li.classList.add("user-card");
+    
+    const button = document.createElement("button");
+    button.setAttribute("data-user-id", user.id);    
+    button.textContent = `Load ${user.username}'s posts`;
+    
+    li.append(button);
+    usersUl.append(li);
+  })
 };
 
-export const renderPosts = () => {
+export const renderPosts = (postsUl, posts) => {
+  postsUl.innerHTML = ''; 
+  posts.forEach((post) => {
+    const li = document.createElement("li");
+
+    const h2 = document.createElement("h2");
+    h2.textContent = post.title;
+
+    const p = document.createElement("p");
+    p.textContent = post.body;
+
+    li.append(h2, p);
+    postsUl.append(li);
+  })
 }
 
-export const renderNewUser = () => {
+export const renderNewUser = (newUserDiv, newUserInfo) => {
+  newUserDiv.innerHTML = ''; 
+
+  const h2 = document.createElement("h2");
+  h2.textContent = newUserInfo.username;
+
+  const p = document.createElement("p");
+  p.textContent = newUserInfo.email; 
+
+  newUserDiv.append(h2, p);
 }
