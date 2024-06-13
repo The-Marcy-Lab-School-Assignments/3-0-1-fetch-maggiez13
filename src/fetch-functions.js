@@ -44,6 +44,18 @@ export const getUserPosts = (userId, maxNumPosts = 3) => {
     });
 };
 
+export const createNewUser = (userData) => {
+  return fetch('https://jsonplaceholder.typicode.com/users', {
+      method: 'POST',
+      body: JSON.stringify(userData),
+      headers: {
+          'Content-type': 'application/json; charset=UTF-8',
+      },
+  })
+  .then(response => response.json())
+  .then(json => json); // Return the newly created user object
+};
+
 // export const createNewUser = (newUserData) => {
 //   const postOption = {
 //     method: "POST",                      
@@ -65,15 +77,3 @@ export const getUserPosts = (userId, maxNumPosts = 3) => {
 //       console.error(error.message);
 //     })
 // }
-
-export const createNewUser = (userData) => {
-  return fetch('https://jsonplaceholder.typicode.com/users', {
-      method: 'POST',
-      body: JSON.stringify(userData),
-      headers: {
-          'Content-type': 'application/json; charset=UTF-8',
-      },
-  })
-  .then(response => response.json())
-  .then(json => json); // Return the newly created user object
-};
