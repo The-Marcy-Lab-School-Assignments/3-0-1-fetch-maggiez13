@@ -44,24 +44,36 @@ export const getUserPosts = (userId, maxNumPosts = 3) => {
     });
 };
 
-export const createNewUser = (newUserData = {username, email}) => {
-  const postOption = {
-    method: "POST",                      
-    body: JSON.stringify(newUserData),       
-  }
-  return fetch(userUrl, postOption)
-    .then((response) => {
-      if (!response.ok) {
-        return console.log(`Fetch failed. ${response.status} ${response.statusText}`)
-      }
-      return response.json();
-    })
-    .then((responseData) => {
-        console.log("Here is your data:", responseData);
-        return responseData;
-    })
-    .catch((error) => {
-      console.log("Error caught!");
-      console.error(error.message);
-    })
-}
+// export const createNewUser = (newUserData) => {
+//   const postOption = {
+//     method: "POST",                      
+//     body: JSON.stringify(newUserData),       
+//   }
+//   return fetch(userUrl, postOption)
+//     .then((response) => {
+//       if (!response.ok) {
+//         return console.log(`Fetch failed. ${response.status} ${response.statusText}`)
+//       }
+//       return response.json();
+//     })
+//     .then((responseData) => {
+//         console.log("Here is your data:", responseData);
+//         return responseData;
+//     })
+//     .catch((error) => {
+//       console.log("Error caught!");
+//       console.error(error.message);
+//     })
+// }
+
+export const createNewUser = (userData) => {
+  return fetch('https://jsonplaceholder.typicode.com/users', {
+      method: 'POST',
+      body: JSON.stringify(userData),
+      headers: {
+          'Content-type': 'application/json; charset=UTF-8',
+      },
+  })
+  .then(response => response.json())
+  .then(json => json); // Return the newly created user object
+};

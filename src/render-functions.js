@@ -31,8 +31,6 @@ export const setupPageBasics = (parentEl) => {
 };
 
 export const renderStatus = (statusDiv, statusInfoObj) => {
-  const div = statusDiv; 
-
   const h2 = document.createElement("h2");
   h2.textContent = `Info on - ${statusInfoObj.url}`;
   h2.setAttribute("id", "status-heading");
@@ -42,11 +40,11 @@ export const renderStatus = (statusDiv, statusInfoObj) => {
   p.textContent = `Status code: ${statusInfoObj.status}, ${statusText}`;
   p.setAttribute("id", "status-code");
   
-  div.append(h2, p);
+  statusDiv.append(h2, p);
 }
 
 export const renderUsers = (usersUl, users) => {
-  usersUl.innerHTML = ''; 
+  usersUl.innerHTML = ""; 
 
   users.forEach((user) => {    
     const li = document.createElement("li");
@@ -62,7 +60,7 @@ export const renderUsers = (usersUl, users) => {
 };
 
 export const renderPosts = (postsUl, posts) => {
-  postsUl.innerHTML = ''; 
+  postsUl.innerHTML = ""; 
   
   posts.forEach((post) => {
     const li = document.createElement("li");
@@ -79,7 +77,7 @@ export const renderPosts = (postsUl, posts) => {
 }
 
 export const renderNewUser = (newUserDiv, newUserInfo) => {
-  newUserDiv.innerHTML = ''; 
+  newUserDiv.innerHTML = ""; 
 
   const h2 = document.createElement("h2");
   h2.textContent = newUserInfo.username;

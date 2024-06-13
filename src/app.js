@@ -47,5 +47,6 @@ export default function app(appDiv) {
       renderNewUser(newUserDiv, newUser);
       newUserForm.reset();
     });
+    
   });
 }
